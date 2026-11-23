@@ -1,0 +1,118 @@
+This activity provides you with an Amazon Web Services (AWS) account where an AWS Elastic Beanstalk environment has been pre-created for you. You will deploy code to it and observe the AWS resources that make up the Elastic Beanstalk environment.
+
+Task 1: Access the Elastic Beanstalk environment
+
+    In the console, in the search box to the right of to  *Services*, search for and choose *Elastic Beanstalk*. 
+
+    A page titled Environments should open, and it should show a table that lists the details for an existing Elastic Beanstalk application.  
+
+    Note: If the status in the Health column is not Ok, it has not finished starting yet. Wait a few moments, and it should change to Ok.
+
+    elastic-beanstalk-app
+
+     
+
+    Under the Environment name column, choose the name of the environment.
+
+    The Dashboard page for your Elastic Beanstalk environment opens.
+
+     
+
+    Notice that the page shows that the health of your application is Ok.
+
+    The Elastic Beanstalk environment is ready to host an application. However, it does not yet have running code.
+
+     
+
+    Test access to the environment.
+
+        Near the top of the page, choose the Domain link (the URL ends in elasticbeanstalk.com).
+
+        When you choose the URL, a new browser tab opens. However, you should see that it displays an HTTP Status 404 - Not Found message. 
+
+        This behavior is expected because this application server doesn't have an application running on it yet. 
+
+        Return to the Elastic Beanstalk console.
+
+        In the next step, you will deploy code in your Elastic Beanstalk environment.
+
+         
+
+Task 2: Deploy a sample application to Elastic Beanstalk
+
+    To download a sample application, choose this link:
+    https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/samples/tomcat.zip
+
+ 
+
+    Back in the Elastic Beanstalk Dashboard, choose Upload and Deploy.
+
+     
+
+    Choose Choose File, then navigate to and open the tomcat.zip file that you just downloaded.
+
+     
+
+    Choose Deploy.
+
+    It will take a minute or two for Elastic Beanstalk to update your environment and deploy the application.
+
+     
+
+    After the deployment is complete, choose the Domain URL link (or, if you still have the browser tab that displayed the 404 status, refresh that page).
+
+    The web application that you deployed displays.
+
+    web-app
+
+    Congratulations, you have successfully deployed an application on Elastic Beanstalk!
+
+     
+
+    Back in the Elastic Beanstalk console, choose Configuration in the left pane.
+
+    Notice the details here.
+
+    For example, in the Instance traffic and scaling panel, it indicates the EC2 Security groups, minimum and maximum instances, and instance type details of the Amazon Elastic Compute Cloud (Amazon EC2) instances that are hosting your web application.
+
+     
+
+    In the Networking, database, and tags panel, no configuration details display, because the environment does not include a database.
+
+     
+
+    In the Networking, database, and tags row, choose Edit.
+
+    Note that you could easily enable a database to this environment if you wanted to: you only need to set a few basic configurations and choose Apply. (However, for the purposes of this activity, you do not need to add a database.)
+
+        Choose Cancel at the bottom of the screen.
+
+     
+
+    In the left panel under Environment, choose Monitoring.
+
+    Browse through the charts to see the kinds of information that are available to you.
+
+     
+
+Task 3: Explore the AWS resources that support your application
+
+    In the console, in the search box to the right of to  *Services*, search for and choose EC2
+
+     
+
+    Choose Instances.
+
+    Note that two instances that support your web application are running (they both contain samp in their names). 
+
+     
+
+    If you want to continue exploring the Amazon EC2 service resources that were created by Elastic Beanstalk, feel free to explore them. You will find:
+
+        A security group with port 80 open
+
+        A load balancer that both instances belong to
+
+        An Auto Scaling group that runs from two to six instances, depending on the network load
+
+     Though Elastic Beanstalk created these resources for you, you still have access to them.
